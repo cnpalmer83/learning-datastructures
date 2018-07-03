@@ -34,4 +34,28 @@ public class BinarySearchTree {
             }
         }
     }
+
+    public Node findMinimum() {
+        Node current = root;
+        Node last = null;
+
+        while (current != null) {
+            last = current;
+            current = current.leftChild;
+        }
+        return last;
+    }
+
+    public Node findMaximum() {
+        Node current = root;
+        Node last = null;
+
+        while (current != null) {
+            last = current;
+            current = current.rightChild;
+        }
+        return last;
+    }
+
+
 }
