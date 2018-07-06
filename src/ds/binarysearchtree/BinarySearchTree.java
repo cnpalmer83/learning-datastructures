@@ -101,7 +101,7 @@ public class BinarySearchTree {
 
         // Node to delete has one child to the left and rightChild is null
         else if (nodeToDelete.rightChild == null) {
-            if (nodeToDelete = root)
+            if (nodeToDelete == root)
                 root = nodeToDelete.leftChild;
             else if (isLeftChild)
                 parentNode.leftChild = nodeToDelete.leftChild;
@@ -111,7 +111,7 @@ public class BinarySearchTree {
 
         // Node to delete has one child to the right and leftChild is null
         else if (nodeToDelete.leftChild == null) {
-            if (nodeToDelete = root)
+            if (nodeToDelete == root)
                 root = nodeToDelete.rightChild;
             else if (isLeftChild)
                 parentNode.leftChild = nodeToDelete.rightChild;
@@ -126,7 +126,7 @@ public class BinarySearchTree {
             Node successor = getSuccessor(nodeToDelete);
 
             // Step 2: connect deleted node's parent to successor
-            if (nodeToDelete = root)
+            if (nodeToDelete == root)
                 root = successor;
             else if (isLeftChild)
                 parentNode.leftChild = successor;

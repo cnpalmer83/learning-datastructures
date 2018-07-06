@@ -11,6 +11,9 @@ public class App {
 
 
         System.out.println(tree.findMaximum().key);
-        System.out.print(tree.findMinimum().key);
+        System.out.println(tree.findMinimum().key);
+
+        System.out.println(tree.remove(10));
+        System.out.println(tree.findMinimum().key);
     }
 }
