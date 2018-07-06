@@ -125,6 +125,16 @@ public class BinarySearchTree {
             // Step 1: find the successor to replace deleted node
             Node successor = getSuccessor(nodeToDelete);
 
+            // Step 2: connect deleted node's parent to successor
+            if (nodeToDelete = root)
+                root = successor;
+            else if (isLeftChild)
+                parentNode.leftChild = successor;
+            else
+                parentNode.rightChild = successor;
+
+            successor.leftChild = nodeToDelete.leftChild;
+
         }
 
         return true;
@@ -132,6 +142,26 @@ public class BinarySearchTree {
 
     private Node getSuccessor(Node nodeToDelete) {
 
+        Node successorParent = nodeToDelete;
+        Node successor = nodeToDelete;
+
+        // Get right child first
+        Node current = nodeToDelete.rightChild;
+
+        // Then find smallest of the right child
+        while (current != null) {
+            successorParent = successor;
+            successor = current;
+            current = current.leftChild;
+        }
+        // The smallest value in the subtree has been found (the in order successor)
+
+        // If successor is not a right child
+        if ( successor != nodeToDelete.rightChild) {
+            successorParent.leftChild = successor.rightChild;
+            successor.rightChild = nodeToDelete.rightChild;
+        }
+        return successor;
     }
 
 
