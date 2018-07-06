@@ -57,5 +57,16 @@ public class BinarySearchTree {
         return last;
     }
 
+    public boolean remove(int key) {
+
+        // Scenario 1: Is the node a leaf?
+
+        // Scenario 2: Does the node have one child?
+
+        // Scenario 3: Does the node have two children?
+
+        return true;
+    }
+
 
 }
