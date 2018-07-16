@@ -30,15 +30,6 @@ public class LinkedList {
             last.next = newNode;
             last = newNode;
         }
-        /*
-        Node current = first;
-        while (current.next != null) {
-            current = current.next;
-        }
-        Node newNode = new Node();
-        newNode.data = data;
-        current.next = newNode;
-        */
     }
 
     public Node deleteFirst() {

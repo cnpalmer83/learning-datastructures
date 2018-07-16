@@ -5,22 +5,22 @@ import java.util.Stack;
 
 public class BinarySearchTree {
 
-    private Node root;
+    protected Node root;
+    private int nodeCount = 0;
 
     public void insert(int key, String value) {
 
         Node newNode = new Node(key, value);
-
-        if (root == null) {
+        nodeCount++;
+        if (root == null)
             root = newNode;
-        }
         else {
             Node current = root;        // A node for traversing tree
             Node parent;
 
             while (true) {
                 parent = current;
-                if (key < current.key) {
+                if (key <= current.key) {
                     current = current.leftChild;
                     if (current == null) {  // It's parent is the leaf node
                         parent.leftChild = newNode;
@@ -36,6 +36,11 @@ public class BinarySearchTree {
                 }
             }
         }
+
+    }
+
+    public int getNodeCount() {
+        return nodeCount;
     }
 
     public Node findMinimum() {
@@ -139,7 +144,7 @@ public class BinarySearchTree {
             successor.leftChild = nodeToDelete.leftChild;
 
         }
-
+        nodeCount--;
         return true;
     }
 
@@ -172,7 +177,7 @@ public class BinarySearchTree {
         globalStack.push(root);
         int nBlanks = 32;
         boolean isRowEmpty = false;
-        System.out.println("......................................................");
+        System.out.println(".............................................................");
 
         while(isRowEmpty==false) {
             Stack localStack = new Stack();
@@ -207,7 +212,17 @@ public class BinarySearchTree {
             while(localStack.isEmpty()==false)
                 globalStack.push( localStack.pop() );
         }
-        System.out.println( "......................................................");
+        System.out.println( "............................................................");
 
+    }
+
+    public void displayInOrder(Node root) {
+        if (root == null)
+            return;
+        else {
+            displayInOrder(root.leftChild);
+            System.out.print(root.key + " ");
+            displayInOrder(root.rightChild);
+        }
     }
 }

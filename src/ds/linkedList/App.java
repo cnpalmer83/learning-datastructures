@@ -10,5 +10,8 @@ public class App {
         myList.insertFirst(88);
         myList.insertLast(35);
         myList.displayList();
+        myList.deleteFirst();
+        System.out.println("Deleting first node... deleted.");
+        myList.displayList();
     }
 }
