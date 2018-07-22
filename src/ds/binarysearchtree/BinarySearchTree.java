@@ -225,4 +225,62 @@ public class BinarySearchTree {
             displayInOrder(root.rightChild);
         }
     }
+
+    public void emptyTree() {
+        while (!isEmpty()) {
+            remove(this.root.key);
+        }
+    }
+
+    public boolean isEmpty() {
+        if (this.root == null)
+            return true;
+        else
+            return false;
+    }
+
+    // creates sorted array of tree keys for balanceTree method
+    // (this is really bad...)
+    private int [] keyArray() {
+        int [] temp = new int[nodeCount];
+
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = findMinimum().key;
+            remove(findMinimum().key);
+        }
+        return temp;
+    }
+
+    public void balanceTree() {
+        int [] temp = keyArray();
+        int middle = ((0 + (temp.length - 1)) / 2);
+        int insertKey = middle - 2;
+
+        insert(temp[middle], "root inserted");
+
+        // Insert left nodes
+        while (insertKey >= 0) {
+            insert(temp[insertKey], "left node sorted");
+            insertKey = insertKey - 2;
+        }
+        insertKey = middle - 1;
+
+        while (insertKey >= 0) {
+            insert(temp[insertKey], "left node sorted");
+            insertKey = insertKey - 2;
+        }
+        insertKey = middle + 2;
+
+        // Insert right nodes
+        while (insertKey < temp.length) {
+            insert(temp[insertKey], "right node sorted");
+            insertKey = insertKey + 2;
+        }
+        insertKey = middle + 1;
+
+        while (insertKey < temp.length) {
+            insert(temp[insertKey], "right node sorted");
+            insertKey = insertKey + 2;
+        }
+    }
 }
